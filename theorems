@@ -1,0 +1,70 @@
+Disclaimer: these are only the solutions to the exercises. It is strongly encouraged to try them yourselves before looking at the answer. NO answers to assignments or anything graded is provided.
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Exercise 2.2: Natural induction
+
+Declaration: ℕ : Type
+Declaration: S_ : ℕ → ℕ
+
+Addition
+--------------------
+Declaration: _+_ : ℕ → ℕ → ℕ
+Axiom “Definition of +”
+      “Left-identity of +”
+      “Definition of + for 0”:        0 + n = n
+Axiom “Definition of +”
+      “Addition of successor”
+      “Definition of + for `S`”:  (S m) + n = S (m + n)
+Theorem “Right-identity of +”: m + 0 = m
+Theorem “Adding the successor”: m + (S n) = S (m + n)
+Theorem “Symmetry of +”: m + n = n + m
+Theorem “Associativity of +”: (a + b) + c = a + (b + c)
+Theorem “Identity of +”: 0 + a = a
+
+Multiplication
+---------------------
+Declaration: _·_ : ℕ → ℕ → ℕ
+Axiom “Definition of ·”: 0 · n = 0
+Axiom “Definition of ·”: (S m) · n = n + m · n
+Axiom “Definition of 1”: 1 = S 0
+Theorem “Left-identity of ·”: 1 · n = n
+Theorem “Right-zero of ·”: m · 0 = 0
+Theorem “Multiplying the successor”: m · (S n) = m · n + m
+Theorem “Symmetry of ·”: m · n = n · m
+Theorem “Zero of ·”: m · 0 = 0
+Theorem “Identity of ·”: 1 · m = m
+Theorem “Distributivity of · over +”: k · (m + n) = k · m + k · n
+Theorem “Associativity of ·”: (k · m) · n = k · (m · n)
+
+Monus (Subtraction)
+---------------------
+Declaration: _-_ : ℕ → ℕ → ℕ
+Axiom “Subtraction from zero”: 0 - n = 0
+Axiom “Subtraction of zero from successor”: (S m) - 0 = S m
+Axiom “Subtraction of successor from successor”: (S m) - (S n) = m - n
+Theorem “Right-identity of subtraction”: m - 0 = m
+Theorem “Self-cancellation of subtraction”: m - m = 0
+Theorem “Subtraction after addition”: (m + n) - n = m
+Theorem “Subtraction from multiplication with successor”: m · (S n) - m = m · n
+Theorem “Subtraction of sum”: k - (m + n) = (k - m) - n
+Theorem “Distributivity of · over subtraction”: k · (m - n) = k · m - k · n
+Theorem “Monus exchange”: m + (n - m) = n + (m - n)
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Exercise 3.1: Order on the Natural Numbers
+
+Axiom “Cancellation of `S`”: S m = S n  ≡  m = n
+Axiom “Zero is not suc”: 0 = S n  ≡  false
+Theorem “Cancellation of +”: k + m = k + n  ≡  m = n
+Declaration: _≤_ : ℕ → ℕ → 𝔹
+Axiom “Zero is least element”:           0 ≤ a
+Axiom “Isotony of successor”:          S a ≤ S b  ≡  a ≤ b
+Axiom “Successor is not at most zero”: S a ≤ 0    ≡ false
+Theorem “Zero is unique least element”:    a ≤ 0  ≡  a = 0
+Theorem “Reflexivity of ≤”: a ≤ a
+Theorem “Isotony of +”: a + b ≤ a + c  ≡  b ≤ c
+Theorem “Monotony of -”: a ≤ b ⇒ a - c ≤ b - c
+Theorem “Antitony of -”: b ≤ c ⇒ a - c ≤ a - b
+Theorem “Transitivity of ≤”: a ≤ b ⇒ b ≤ c ⇒ a ≤ c

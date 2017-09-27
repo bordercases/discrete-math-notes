@@ -1,0 +1,68 @@
+3.1.6
+Theorem “Cancellation of +”: k + m = k + n  ≡  m = n
+Proof:
+  By induction on `k : ℕ`:
+    Base case:
+        0 + m = 0 + n
+      =⟨ “Identity of +” ⟩
+        m = n
+    Induction step:
+        S k + m = S k + n
+      =⟨ “Adding the successor” ⟩
+        S (k + m) = S (k + n)
+      =⟨ “Cancellation of `S`” ⟩
+        k + m = k + n
+      =⟨ Induction hypothesis `k + m = k + n  ≡  m = n` ⟩
+        m = n
+3.1.11
+Theorem “Zero is unique least element”:    a ≤ 0  ≡  a = 0
+Proof:
+  By induction on `a : ℕ`:
+    Base case:
+        0 ≤ 0 ≡ 0 = 0
+      =⟨ “Zero is least element” ⟩
+        true ≡ 0 = 0
+      =⟨ “Reflexivity of =” ⟩
+        true ≡ true
+      =⟨ “Reflexivity of ≡” ⟩
+        true
+    Induction step:
+        S a ≤ 0 ≡ S a = 0
+      ≡⟨ “Successor is not at most zero” ⟩
+        false ≡ S a = 0
+      ≡⟨ “Zero is not suc” ⟩
+        false ≡ false
+      ≡⟨ “Reflexivity of ≡” ⟩
+        true
+3.1.12
+Theorem “Reflexivity of ≤”: a ≤ a
+Proof:
+  By induction on `a : ℕ`:
+    Base case:
+        0 ≤ 0
+      ≡⟨ “Zero is unique least element” ⟩
+        0 = 0
+      ≡⟨ “Reflexivity of =” ⟩
+        true
+    Induction step:
+        S a ≤ S a
+      ≡⟨ “Isotony of successor” ⟩
+        a ≤ a
+      ≡⟨ Induction hypothesis ⟩
+        true
+3.1.13
+Theorem “Isotony of +”: a + b ≤ a + c  ≡  b ≤ c
+Proof:
+  By induction on `a : ℕ`:
+    Base case:
+        0 + b ≤ 0 + c
+      ≡⟨ “Identity of +” ⟩
+        b ≤ c
+    Induction step:
+        S a + b ≤ S a + c
+      ≡⟨ “Adding the successor” ⟩
+        S (a + b) ≤ S (a + c)
+      ≡⟨ “Isotony of successor” ⟩
+        a + b ≤ a + c
+      ≡⟨ Induction hypothesis ⟩
+        b ≤ c
