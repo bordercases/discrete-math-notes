@@ -1,3 +1,4 @@
+---------------------
 3.1.6
 Theorem “Cancellation of +”: k + m = k + n  ≡  m = n
 Proof:
@@ -14,6 +15,7 @@ Proof:
         k + m = k + n
       =⟨ Induction hypothesis `k + m = k + n  ≡  m = n` ⟩
         m = n
+---------------------
 3.1.11
 Theorem “Zero is unique least element”:    a ≤ 0  ≡  a = 0
 Proof:
@@ -34,6 +36,7 @@ Proof:
         false ≡ false
       ≡⟨ “Reflexivity of ≡” ⟩
         true
+---------------------
 3.1.12
 Theorem “Reflexivity of ≤”: a ≤ a
 Proof:
@@ -50,6 +53,7 @@ Proof:
         a ≤ a
       ≡⟨ Induction hypothesis ⟩
         true
+---------------------
 3.1.13
 Theorem “Isotony of +”: a + b ≤ a + c  ≡  b ≤ c
 Proof:

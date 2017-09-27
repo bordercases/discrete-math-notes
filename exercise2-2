@@ -1,0 +1,20 @@
+Multiplying a successor:
+
+Theorem: m.(Sn) = m.n + m
+Proof:
+
+By induction on m: N
+Base case: 0* Sn
+    =<Zero of *>
+
+    Induction step:
+    Sm * Sn = Sm * n + m
+        By inductio on 'n: N' (doing induction on original theorem: Sm * S n = S m * n + S m)
+            Induction step
+            Sm * Sn
+            = <succ of *>
+            Sm + m(Sm)
+            =Inudction hypothesis
+            Sn + mn + m
+
+if more than one hypothesis, you can use both induction hypotheses
