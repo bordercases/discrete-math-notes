@@ -14,7 +14,10 @@ Axiom (15.2) (15.2b) “Symmetry of ·”: a · b = b · a
 Axiom (15.3) “Additive identity” “Identity of +”: 0 + a = a
 Axiom (15.4) “Multiplicative identity” “Identity of ·”: 1 · a = a
 Axiom (15.5) “Distributivity” “Distributivity of · over +”: a · (b + c) = a · b + a · c
+Axiom (15.8) “Cancellation” “Cancellation of +”:
+    a + b = a + c  ≡  b = c
 Axiom (15.9) “Zero of ·”: a · 0 = 0
+Theorem (15.10a) “Unique identity of +”: a + z = a  ≡  z = 0
 Declaration: -_ : ℤ → ℤ
 Declaration: _-_ : ℤ → ℤ
 Axiom (15.13) “Unary minus”: a + (- a) = 0
@@ -22,8 +25,10 @@ Axiom (15.14) “Subtraction”: a - b = a + (- b)
 
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
 
-Exercise 1.2: Equational Theory of Integers / Exercise 1.4: Equational Theory of Integers ─ without automatic associativity and symmetry
+Equational Theory of Integers
 
+Theorem (15.15) “Unique additive inverse”: x + a = 0  ≡  x = - a
+Theorem (15.16) “Injectivity of unary minus”: - a = - b  ≡  a = b
 Theorem (15.17) “Self-inverse of unary minus”:
    - (- a) = a
 Theorem (15.18) “Fixpoint of unary minus”: - 0 = 0
@@ -35,6 +40,9 @@ Theorem (15.22): a · (- b) = - (a · b)
 Theorem (15.23): (- a) · (- b) = a · b
 Theorem (15.24) “Right-identity of -”: a - 0 = a
 Theorem (15.25): (a - b) + (c - d) = (a + c) - (b + d)
+Theorem (15.25b) “Subtraction of addition”:
+   a - (b + c) = (a - b) - c
+Theorem (15.25c): (a - b) + (b - c) = a - c
 Theorem (15.26): (a - b) - (c - d) = (a + d) - (b + c)
 Theorem (15.27): (a - b) · (c - d) = (a · c + b · d) - (a · d + b · c)
 Theorem (15.29) “Distributivity of · over -”:
@@ -42,16 +50,7 @@ Theorem (15.29) “Distributivity of · over -”:
 
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
 
-Assignment 1.2: Proving in the Equational Theory of Integers / Assignment 1.4: Proving Integer Theorems with Rigid Matching
-
-Theorem (15.25b) “Subtraction of addition”:
-   a - (b + c) = (a - b) - c
-Theorem (15.25c): (a - b) + (b - c) = a - c
-
-
-~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
-
-Exercise 2.2: Natural induction
+Natural induction
 
 Declaration: ℕ : Type
 Declaration: S_ : ℕ → ℕ
@@ -100,10 +99,6 @@ Theorem “Subtraction of sum”: k - (m + n) = (k - m) - n
 Theorem “Distributivity of · over subtraction”: k · (m - n) = k · m - k · n
 Theorem “Monus exchange”: m + (n - m) = n + (m - n)
 
-~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
-
-Assignment 2.2: Natural Induction — Maximum and Minimum
-
 Maximum
 ---------------------
 Declaration: _↑_ : ℕ → ℕ → ℕ
@@ -129,9 +124,11 @@ Theorem “Absorption of ↓ by ↑”: m ↑ (m ↓ n) = m
 Theorem “Distributivity of ↓ over ↑”: k ↓ (m ↑ n) = (k ↓ m) ↑ (k ↓ n)
  Theorem “Idempotence of ↓”: n ↓ n = n
 
+ Theorem “Golden Rule for ℕ”: m ↓ n = m   ≡   n = m ↑ n
+
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
 
-Exercise 3.1: Order on the Natural Numbers
+Order on the Natural Numbers
 
 Axiom “Cancellation of `S`”: S m = S n  ≡  m = n
 Axiom “Zero is not suc”: 0 = S n  ≡  false
@@ -147,35 +144,6 @@ Theorem “Monotony of -”: a ≤ b ⇒ a - c ≤ b - c
 Theorem “Antitony of -”: b ≤ c ⇒ a - c ≤ a - b
 Theorem “Transitivity of ≤”: a ≤ b ⇒ b ≤ c ⇒ a ≤ c
 
-~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
-
-Exercise 3.2: Using Cancellation of Addition
-
-Axiom (15.8) “Cancellation” “Cancellation of +”:
-    a + b = a + c  ≡  b = c
-Theorem (15.10a) “Unique identity of +”: a + z = a  ≡  z = 0
-Theorem (15.15) “Unique additive inverse”: x + a = 0  ≡  x = - a
-Theorem (15.16) “Injectivity of unary minus”: - a = - b  ≡  a = b
-Theorem (15.20): - a = (- 1) · a
-
-~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
-
-Exercise 3.3: Variations of Reasoning with Implications
-
-Declaration: pred : ℕ → ℕ
-Axiom “Predecessor of zero”: pred 0 = 0
-Axiom “Predecessor of successor”: pred (S n) = n
-Theorem “Monotony of predecessor”: a ≤ b ⇒ pred a ≤ pred b
-Theorem “Antisymmetry of ≤”: a ≤ b ⇒ b ≤ a ⇒ a = b
-“Left-identity of ⇒”:                true ⇒ p   ≡  p
-“ex falso quodlibet”:                false ⇒ p  ≡  true
-
-~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
-
-Assignment 3.1: More About Maximum and Minimum
-
-Axiom “Cancellation of `S`”: S m = S n  ≡  m = n
-Axiom “Zero is not suc”:       0 = S n  ≡  false
 Precedence 110 for: _≤₂_
 Declaration: _≤₂_ : ℕ → ℕ → 𝔹
 Axiom “Definition of ≤₂”: a ≤₂ b   ≡   a ↓ b = a
@@ -184,14 +152,18 @@ Theorem “Zero is least element for ≤₂”: 0 ≤₂ m
 Theorem “Successor is not at most zero for ≤₂”:
     S m ≤₂ 0   ≡   false
 Theorem “Isotony of `S` for ≤₂”:  S a ≤₂ S b   ≡   a ≤₂ b
-Theorem “Golden Rule for ℕ”: m ↓ n = m   ≡   n = m ↑ n
+
+Theorem “Maximum is increasing”: a ≤ a ↑ b
+Theorem “Monotony of ↑”: a ≤ b ⇒ a ↑ c ≤ b ↑ c
 
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
 
-Assignment 3.2: Monotony of Maximum
+Variations of Reasoning
 
-Axiom “Zero is least element”:           0 ≤ a
-Axiom “Isotony of successor”:          S a ≤ S b  ≡  a ≤ b
-Axiom “Successor is not at most zero”: S a ≤ 0    ≡ false
-Theorem “Maximum is increasing”: a ≤ a ↑ b
-Theorem “Monotony of ↑”: a ≤ b ⇒ a ↑ c ≤ b ↑ c
+Declaration: pred : ℕ → ℕ
+Axiom “Predecessor of zero”: pred 0 = 0
+Axiom “Predecessor of successor”: pred (S n) = n
+Theorem “Monotony of predecessor”: a ≤ b ⇒ pred a ≤ pred b
+Theorem “Antisymmetry of ≤”: a ≤ b ⇒ b ≤ a ⇒ a = b
+“Left-identity of ⇒”:                true ⇒ p   ≡  p
+“ex falso quodlibet”:                false ⇒ p  ≡  true
