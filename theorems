@@ -17,7 +17,7 @@ Axiom (15.8) “Cancellation” “Cancellation of +”:
 Axiom (15.9) “Zero of ·”: a · 0 = 0
 Theorem (15.10a) “Unique identity of +”: a + z = a  ≡  z = 0
 Declaration: -_ : ℤ → ℤ
-Declaration: _-_ : ℤ → ℤ
+Declaration: _-_ : ℤ → ℤ → ℤ
 Axiom (15.13) “Unary minus”: a + (- a) = 0
 Axiom (15.14) “Subtraction”: a - b = a + (- b)
 
