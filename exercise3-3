@@ -1,3 +1,4 @@
+---------------------
 3.3.6
 Theorem “Monotony of predecessor”: a ≤ b ⇒ pred a ≤ pred b
 Proof:
@@ -28,6 +29,7 @@ Proof:
             a ≤ b ⇒ a ≤ b
           =⟨ “Reflexivity of ⇒” ⟩
             true
+---------------------
 3.3.7
 Theorem “Isotony of +”: a + b ≤ a + c  ≡  b ≤ c
 Proof:
@@ -46,6 +48,7 @@ Proof:
         a + b ≤ a + c  ≡  b ≤ c
       =⟨ Induction hypothesis `a + b ≤ a + c  ≡  b ≤ c` ⟩
         true
+---------------------
 3.3.8
 Theorem “Antisymmetry of ≤”: a ≤ b ⇒ b ≤ a ⇒ a = b
 Proof:
@@ -76,6 +79,7 @@ Proof:
             a ≤ b ⇒ b ≤ a ⇒ a = b
           =⟨ Induction hypothesis `a ≤ b ⇒ b ≤ a ⇒ a = b` ⟩
             true
+---------------------
 3.3.9
 Theorem “Transitivity of ≤”: a ≤ b ⇒ b ≤ c ⇒ a ≤ c
 Proof:

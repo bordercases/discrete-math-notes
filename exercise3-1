@@ -117,3 +117,38 @@ Proof:
                 a ≤ b ⇒ (a - c) ≤ (b - c)
               ≡⟨ Induction hypothesis `a ≤ b ⇒ a - c ≤ b - c` ⟩
                 true
+---------------------
+3.1.16
+Theorem “Transitivity of ≤”: a ≤ b ⇒ b ≤ c ⇒ a ≤ c
+Proof:
+  By induction on `a : ℕ`:
+    Base case `0 ≤ b ⇒ b ≤ c ⇒ 0 ≤ c`:
+        0 ≤ b ⇒ b ≤ c ⇒ 0 ≤ c
+      ≡⟨ “Zero is least element” ⟩
+        0 ≤ b ⇒ b ≤ c ⇒ true
+      ≡⟨ “Right-zero of ⇒” ⟩
+        true
+    Induction step `S a ≤ b ⇒ b ≤ c ⇒ S a ≤ c`:
+      By induction on `b : ℕ`:
+        Base case `S a ≤ 0 ⇒ 0 ≤ c ⇒ S a ≤ c`:
+            S a ≤ 0 ⇒ 0 ≤ c ⇒ S a ≤ c
+          ≡⟨ “Successor is not at most zero” ⟩
+            false ⇒ 0 ≤ c ⇒ S a ≤ c
+          ≡⟨ “ex falso quodlibet” ⟩
+            true
+        Induction step `S a ≤ S b ⇒ S b ≤ c ⇒ S a ≤ c`:
+          By induction on `c : ℕ`:
+            Base case `S a ≤ S b ⇒ S b ≤ 0 ⇒ S a ≤ 0`:
+                S a ≤ S b ⇒ S b ≤ 0 ⇒ S a ≤ 0
+              ≡⟨ “Successor is not at most zero” ⟩
+                S a ≤ S b ⇒ false ⇒ S a ≤ 0
+              ≡⟨ “ex falso quodlibet” ⟩
+                S a ≤ S b ⇒ true
+              ≡⟨ “Right-zero of ⇒” ⟩
+                true
+            Induction step `S a ≤ S b ⇒ S b ≤ S c ⇒ S a ≤ S c`:
+               S a ≤ S b ⇒ S b ≤ S c ⇒ S a ≤ S c
+              ≡⟨ “Isotony of successor” ⟩
+               a ≤ b ⇒ b ≤ c ⇒ a ≤ c
+              ≡⟨ Induction hypothesis `a ≤ b ⇒ b ≤ c ⇒ a ≤ c` ⟩
+               true
