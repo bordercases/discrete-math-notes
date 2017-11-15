@@ -165,3 +165,139 @@ Theorem “Monotony of predecessor”: a ≤ b ⇒ pred a ≤ pred b
 Theorem “Antisymmetry of ≤”: a ≤ b ⇒ b ≤ a ⇒ a = b
 “Left-identity of ⇒”:                true ⇒ p   ≡  p
 “ex falso quodlibet”:                false ⇒ p  ≡  true
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Equivalence, Negation, Inequivalence
+
+Axiom (3.1) “Associativity of ≡”: ((p ≡ q) ≡ r) ≡ (p ≡ (q ≡ r))
+Axiom (3.2) “Symmetry of ≡”: (p ≡ q) ≡ (q ≡ p)
+Axiom (3.3) “Identity of ≡”: true ≡ q ≡ q
+Theorem (3.4): true
+Theorem (3.5) “Reflexivity of ≡”: p ≡ p
+Axiom (3.8) “Definition of `false`”: false ≡ ¬ true
+Axiom (3.9) “Distributivity of ¬ over ≡”
+            “Mutual associativity of ¬ with ≡”:  ¬(p ≡ q) ≡ ¬ p ≡ q
+Axiom (3.10) “Definition of ≢”: (p ≢ q) ≡ ¬(p ≡ q)
+Theorem (3.11) “¬ connection”: ¬ p ≡ q ≡ p ≡ ¬ q
+Theorem (3.12) “Double negation”: ¬ ¬ p ≡ p
+Theorem (3.13) “Negation of `false`”: ¬ false ≡ true
+Theorem (3.14): (p ≢ q) ≡ ¬ p ≡ q
+Theorem (3.15): ¬ p ≡ p ≡ false
+Theorem “Identity of ≢”: (p ≢ false) ≡ p
+Theorem (3.16) “Symmetry of ≢”: (p ≢ q) ≡ (q ≢ p)
+Theorem (3.17) “Associativity of ≢”: ((p ≢ q) ≢ r) ≡ (p ≢ (q ≢ r))
+Theorem (3.18) “Mutual associativity of ≡ with ≢”: ((p ≢ q) ≡ r) ≡ (p ≢ (q ≡ r))
+Theorem (3.19) “Mutual interchangeability of ≡ with ≢”: (p ≢ q ≡ r) ≡ (p ≡ q ≢ r)
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Disjunction
+
+Axiom (3.24) “Symmetry of ∨”: p ∨ q ≡ q ∨ p
+Axiom (3.25) “Associativity of ∨”: (p ∨ q) ∨ r ≡ p ∨ (q ∨ r)
+Axiom (3.26) “Idempotency of ∨”: p ∨ p ≡ p
+Axiom (3.27) “Distributivity of ∨ over ≡”: p ∨ (q ≡ r) ≡ p ∨ q ≡ p ∨ r
+Axiom (3.28) “Excluded Middle” “LEM”: p ∨ ¬ p
+Theorem (3.29) “Zero of ∨”: p ∨ true ≡ true
+Theorem (3.30) “Identity of ∨”: p ∨ false ≡ p
+Theorem (3.31) “Distributivity of ∨ over ∨”: p ∨ (q ∨ r) ≡ (p ∨ q) ∨ (p ∨ r)
+Theorem (3.32): p ∨ q ≡ p ∨ ¬ q ≡ p //remember this!
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Conjunction
+
+Axiom (3.35) “Golden rule”: p ∧ q ≡ p ≡ q ≡ p ∨ q
+Theorem (3.36) “Symmetry of ∧”: p ∧ q ≡ q ∧ p
+Theorem (3.37) “Associativity of ∧”: (p ∧ q) ∧ r ≡ p ∧ (q ∧ r)
+Theorem (3.38) “Idempotency of ∧”: p ∧ p ≡ p
+Theorem (3.39) “Identity of ∧”: p ∧ true ≡ p
+Theorem (3.40) “Zero of ∧”: p ∧ false ≡ false
+Theorem (3.41) “Distributivity of ∧ over ∧”: p ∧ (q ∧ r) ≡ (p ∧ q) ∧ (p ∧ r)
+Theorem (3.42) “Contradiction”: p ∧ ¬ p ≡ false
+Theorem (3.43) (3.43a) “Absorption”: p ∧ (p ∨ q) ≡ p
+Theorem (3.43) (3.43b) “Absorption”: p ∨ (p ∧ q) ≡ p
+Theorem (3.44) (3.44a) “Absorption”: p ∧ (¬ p ∨ q) ≡ p ∧ q
+Theorem (3.44) (3.44b) “Absorption”: p ∨ (¬ p ∧ q) ≡ p ∨ q
+Theorem (3.44) (3.44c) “Absorption”: ¬ p ∧ (p ∨ q) ≡ ¬ p ∧ q
+Theorem (3.44) (3.44d) “Absorption”: ¬ p ∨ (p ∧ q) ≡ ¬ p ∨ q
+Theorem (3.45) “Distributivity of ∨ over ∧”: p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)
+Theorem (3.46) “Distributivity of ∧ over ∨”: p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)
+Theorem (3.47) (3.47a) “De Morgan”: ¬(p ∧ q) ≡ ¬ p ∨ ¬ q
+Theorem (3.47) (3.47b) “De Morgan”: ¬(p ∨ q) ≡ ¬ p ∧ ¬ q
+Theorem (3.48): p ∧ q ≡ p ∧ ¬ q ≡ ¬ p
+Theorem (3.49) “Semi-distributivity of ∧ over ≡”: p ∧ (q ≡ r) ≡ p ∧ q ≡ p ∧ r ≡ p
+Theorem (3.50) “Strong Modus Ponens”: p ∧ (q ≡ p) ≡ p ∧ q
+Theorem (3.51) “Replacement”: (p ≡ q) ∧ (r ≡ p) ≡ (p ≡ q) ∧ (r ≡ q)
+Theorem (3.52) “Alternative definition of ≡”: p ≡ q ≡ (p ∧ q) ∨ (¬ p ∧ ¬ q)
+Theorem (3.53) “Exclusive or” “Alternative definition of ≢”:
+  (p ≢ q) ≡ (¬ p ∧ q) ∨ (p ∧ ¬ q)
+Theorem (3.55): (p ∧ q) ∧ r ≡ p ≡ q ≡ r ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p ≡ p ∨ q ∨ r
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Implication
+
+Axiom (3.60) “Definition of ⇒”:
+     p ⇒ q  ≡  p ∧ q  ≡  p
+Theorem (3.63) “Distributivity of ⇒ over ≡”:
+   p ⇒ (q ≡ r) ≡ p ⇒ q ≡ p ⇒ r
+Theorem (3.65) “Shunting”:
+   p ∧ q ⇒ r  ≡  p ⇒ (q ⇒ r)
+Theorem (3.67): p ∧ (q ⇒ p) ≡ p
+Theorem (3.70): p ∨ q ⇒ p ∧ q ≡ p ≡ q
+Theorem (3.76) (3.76d) “Weakening” “Strengthening”:
+   (p ∧ q) ∨ r ⇒ p ∨ r
+Theorem (3.76) (3.76e) “Weakening” “Strengthening”:
+    p ∧ q ⇒ p ∧ (q ∨ r)
+Theorem “Antisymmetry of ⇒”:
+    (p ⇒ q) ∧ (q ⇒ p) ≡ (p ≡ q)
+Theorem (3.59): p ⇒ q ≡ ¬ p ∨ q
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Conditional
+
+Theorem “Implication is a Conditional”:
+    p ⇒ q  ≡  if p then q else true fi
+Theorem “Equivalence is a Conditional”:
+    p ≡ q  ≡  if p then q else ¬ q fi
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Leibniz's Rule as an Axiom, Substitution Theorems
+
+Axiom (3.83) “Leibniz”:
+    e = f  ⇒  E[z ≔ e] = E[z ≔ f]
+Theorem (3.84) (3.84a) “Substitution” “Replacement”:
+    (e = f) ∧ E[z ≔ e]  ≡  (e = f) ∧ E[z ≔ f]
+Theorem (3.84) (3.84b) “Substitution” “Replacement”:
+    (e = f) ⇒ E[z ≔ e]  ≡  (e = f) ⇒ E[z ≔ f]
+Theorem (3.84) (3.84c) “Substitution” “Replacement”:
+    q ∧ (e = f) ⇒ E[z ≔ e]  ≡  q ∧ (e = f) ⇒ E[z ≔ f]
+Theorem (3.85) (3.85a) “Replace by `true`”:
+    p ⇒ E[z ≔ p]  ≡  p ⇒ E[z ≔ true]
+Theorem (3.85) (3.85b) “Replace by `true`”:
+    q ∧ p ⇒ E[z ≔ p]  ≡  q ∧ p ⇒ E[z ≔ true]
+Theorem (3.85c) “Replace by `false`”:
+    ¬ p ⇒ E[z ≔ p]  ≡  ¬ p ⇒ E[z ≔ false]
+Theorem (3.86) (3.86a) “Replace by `false`”:
+    E[z ≔ p] ⇒ p  ≡  E[z ≔ false] ⇒ p
+Theorem (3.86) (3.86b) “Replace by `false`”:
+    E[z ≔ p] ⇒ p ∨ q  ≡  E[z ≔ false] ⇒ p ∨ q
+Theorem (3.87) “Replace by `true`”:
+    p ∧ E[z ≔ p]  ≡  p ∧ E[z ≔ true]
+Theorem (3.88) “Replace by `false`”:
+    p ∨ E[z ≔ p]  ≡  p ∨ E[z ≔ false]
+Theorem (3.89) “Shannon”:
+    E[z ≔ p]  ≡  (p ∧ E[z ≔ true]) ∨ (¬ p ∧ E[z ≔ false])
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Distinguishing natural numbers
+
+
+
+
+
