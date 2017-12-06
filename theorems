@@ -656,7 +656,7 @@ Theorem (9.19) “Trading”, “Trading for ∃”:
 Theorem (9.20) “Trading”, “Trading for ∃”:
    (∃ x ❙ Q ∧ R • P) ≡ (∃ x ❙ Q • R ∧ P)
 Theorem (9.21) “Distributivity of ∧ over ∃”:
-    P ∧ (∃ x ❙ R • Q)  ≡  (∃ x ❙ R • P ∧ Q)
+    P ∧ (∃ x ❙ R • Q)  ≡  (∃ x ❙Trading” ⟩ R • P ∧ Q)
 
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
 
@@ -693,6 +693,7 @@ Theorem “Universal set”: x ∈ 𝐔
 Theorem “Universal set is greatest” “Top set”: X ⊆ 𝐔
 Theorem (11.56) “Simple set comprehension inclusion”:
   {x ❙ P} ⊆ {x ❙ Q}  ≡  (∀ x • P ⇒ Q)
+Theorem “Singletons are non-empty”: ∀ x • ∃ y • y ∈ {x}
 
 Complements
 ---------------------
@@ -722,6 +723,24 @@ Theorem (11.38) “Weakening of ∩”: S ∩ T ⊆ S
 Theorem (11.39) “Contradiction of ∩”: S ∩ ~ S = {}
 Theorem “Golden Rule”: S ∩ T = S  ≡  T = S ∪ T
 
+Pseudocomplements
+----------------------
+Declaration: _➩_ : set X → set X → set X
+Axiom “Characterisation of ➩”:
+    S ⊆ A ➩ B  ≡  S ∩ A ⊆ B
+Lemma “Singleton set”:
+    x ∈ { y }  ≡  x = y
+Lemma “Singleton set inclusion”:
+    { x } ⊆ S  ≡  x ∈ S
+Theorem “Membership in ➩”:
+    x ∈ A ➩ B  ≡  x ∈ A ⇒ x ∈ B
+Theorem “Definition of ➩”:
+     A ➩ B  =  ~ A ∪ B
+Theorem “Pseudocomplement of union”:
+    (A ∪ B) ➩ C  =  (A ➩ C) ∩ (B ➩ C)
+Theorem “Monotonicity of ➩”:
+    B ⊆ C  ⇒  A ➩ B ⊆ A ➩ C
+
 ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
 
 Sequences
@@ -742,7 +761,7 @@ Theorem (13.14) “Snoc is not empty”: xs ▹ x ≠ 𝜖
 Theorem “Snoc is not empty”: xs ▹ x = 𝜖  ≡  false
 Theorem (13.16) “Membership in ▹”: x ∈ (ys ▹ z)  ≡  x ∈ ys ∨ x = z
 
-Declaration: _⌢_ : Seq A → Seq A → Seq A
+Declaration: _⌢_ : Seq A → Seq A → Seq A 
 Axiom (13.17) “Left-identity of ⌢”
               “Definition of ⌢ for 𝜖”:             𝜖 ⌢ ys = ys
 Axiom (13.18) “Mutual associativity of ◃ with ⌢”
@@ -758,6 +777,9 @@ Axiom (13.26) “Subsequence” “Cons is not a subsequence of 𝜖”: ¬ (x �
 Corollary  “Cons is not a subsequence of 𝜖”: (x ◃ xs ⊆ 𝜖) ≡ false
 Axiom (13.27) “Subsequence anchored at head”: x ◃ ys ⊆ x ◃ zs  ≡  ys ⊆ zs
 Axiom (13.28) “Subsequence without head”: x ≠ y  ⇒  (x ◃ xs ⊆ y ◃ ys  ≡  x ◃ xs ⊆ ys)
+Theorem “Subsequence anchored at head”:
+    y = z ⇒ (y ◃ ys ⊆ z ◃ zs  ≡  ys ⊆ zs)
+Theorem (13.33) “Subsequence of 𝜖”: xs ⊆ 𝜖  ≡  xs = 𝜖
 
 Declaration: _⊂_ : Seq A → Seq A → 𝔹
 Axiom (13.29) “Proper subsequence” “Definition of ⊂”: xs ⊂ ys  ≡  xs ⊆ ys ∧ xs ≠ ys
@@ -779,4 +801,198 @@ Axiom “Definition of `map` for 𝜖”: map f 𝜖 = 𝜖
 Axiom “Definition of `map` for ◃”: map f (x ◃ xs) = f x ◃ map f xs
 Theorem “Definition of `map` for ▹”: map f (xs ▹ x) = map f xs ▹ f x
 Theorem “Distributivity of `map` over ⌢”: map f (xs ⌢ ys) = map f xs ⌢ map f ys
+
+
+~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
+
+Relations
+
+Precedence 97 for: _↔_
+Non-associating: _↔_
+Declaration: _↔_ : set t → set u → set (t × u)
+
+Precedence 50 for:  _⦗_⦘_
+Declaration: _⦗_⦘_ : t → set (t × u) → u → 𝔹
+
+Axiom “Definition of ↔”: A ↔ B  =  ℙ (A × B)
+Axiom “Infix relationship” “Definition of `_⦗_⦘_`”:
+    a ⦗ R ⦘ b  ≡  ⟨ a , b ⟩ ∈ R
+
+Axiom “Relation extensionality”: R = S  ≡  ∀ x • ∀ y • x ⦗ R ⦘ y  ≡  x ⦗ R ⦘ y
+
+Axiom “Relation inclusion”: R ⊆ S  ≡  ∀ x • ∀ y • x ⦗ R ⦘ y  ⇒  x ⦗ S ⦘ y
+
+Theorem “Relation union”:             a ⦗ R ∪ S ⦘ b  ≡  a ⦗ R ⦘ b ∨ a ⦗ S ⦘ b
+Theorem “Relation intersection”:      a ⦗ R ∩ S ⦘ b  ≡  a ⦗ R ⦘ b ∧ a ⦗ S ⦘ b
+Theorem “Relation difference”:        a ⦗ R - S ⦘ b  ≡  a ⦗ R ⦘ b ∧ ¬ (a ⦗ S ⦘ b)
+Theorem “Relation pseudocomplement”:  a ⦗ R ➩ S ⦘ b  ≡  a ⦗ R ⦘ b  ⇒  a ⦗ S ⦘ b
+Theorem “Relation complement”:        a ⦗ ~ R   ⦘ b  ≡  ¬ (a ⦗ R ⦘ b)
+
+Declaration: _⨾_ : A ↔ B → B ↔ C → A ↔ C
+Axiom “Relation composition”:         a ⦗ R ⨾ S ⦘ c  ≡  ∃ b • a ⦗ R ⦘ b ∧ b ⦗ S ⦘ c
+
+Declaration: Id : A ↔ A
+Axiom “Identity relation” “Relationship via in `Id`”:   x ⦗ Id  ⦘ y  ≡  x = y
+
+Declaration: _˘ : A ↔ B → B ↔ A
+Axiom “Relation converse” “Relationship via ˘”:         y ⦗ R ˘ ⦘ x  ≡  x ⦗ R ⦘ y
+
+Declaration: _⊆_ : A ↔ B  →  A ↔ B  →  𝔹
+Axiom “Reflexivity of ⊆”:   R ⊆ R
+Axiom “Transitivity of ⊆”:  Q ⊆ R ⇒ R ⊆ S ⇒ Q ⊆ S
+Axiom “Antisymmetry of ⊆”:  R ⊆ S ⇒ S ⊆ R ⇒ R = S
+
+Declaration: _⨾_ : A ↔ B → B ↔ C → A ↔ C
+Axiom “Associativity of ⨾”: (Q ⨾ R) ⨾ S = Q ⨾ (R ⨾ S)
+Axiom “Monotonicity of ⨾”:  P ⊆ Q  ⇒  R ⊆ S  ⇒  P ⨾ R ⊆ Q ⨾ S
+Theorem “Monotonicity of ⨾”:  Q ⊆ R  ⇒  Q ⨾ S ⊆ R ⨾ S
+Theorem “Monotonicity of ⨾”:  R ⊆ S  ⇒  Q ⨾ R ⊆ Q ⨾ S
+
+Declaration: Id : A ↔ A
+Axiom “Identity of ⨾”: Id ⨾ R = R
+Axiom “Identity of ⨾”: R ⨾ Id = R
+
+Declaration: _˘ : A ↔ B → B ↔ A
+Axiom “Self-inverse of ˘”:  R ˘ ˘        =  R
+Axiom “Monotonicity of ˘”:  R ⊆ S        ⇒  R ˘ ⊆ S ˘
+Axiom “Converse of `Id`”:   Id ˘         =  Id
+Axiom “Converse of ⨾”:      (R ⨾ S) ˘    =  S ˘ ⨾ R ˘
+
+
+Lemma “Reflexivity of ⊆”: R = S  ⇒  R ⊆ S
+Theorem “Mutual inclusion”: R = S  ≡  R ⊆ S  ∧  S ⊆ R
+Lemma “Injectivity of converse”: R ˘ = S ˘  ≡  R = S
+Theorem “Isotonicity of ˘”:  R ⊆ S  ≡  R ˘ ⊆ S ˘
+
+Homogeneous Relation Properties
+-------------------------------
+Declaration: is-reflexive, is-irreflexive :                   A ↔ A  →  𝔹
+Declaration: is-symmetric, is-antisymmetric, is-asymmetric :  A ↔ A  →  𝔹
+Declaration: is-transitive, is-idempotent :                   A ↔ A  →  𝔹
+Declaration: is-equivalence, is-order, is-strict-order :      A ↔ A  →  𝔹
+
+Axiom “Definition of reflexivity”:    is-reflexive R      ≡  Id ⊆ R
+Axiom “Definition of symmetry”:       is-symmetric R      ≡  R ˘ ⊆ R
+Axiom “Definition of transitivity”:   is-transitive R     ≡  R ⨾ R ⊆ R
+Axiom “Definition of idempotency”:    is-idempotent R     ≡  R ⨾ R = R
+Axiom “Definition of equivalence”:    is-equivalence R    ≡  is-reflexive R
+                                                             ∧ is-symmetric R
+                                                             ∧ is-transitive R
+
+Lemma “Definition of symmetry”:       is-symmetric R      ≡  R ˘ = R
+Theorem “Reflexivity of converse”: is-reflexive R ≡ is-reflexive (R ˘)
+Theorem “Symmetry of converse”: is-symmetric R ≡ is-symmetric (R ˘)
+Theorem “Transitivity of converse”: is-transitive R ≡ is-transitive (R ˘)
+Theorem “Idempotency of converse”: is-idempotent R ≡ is-idempotent (R ˘)
+Theorem “Converse of an equivalence”: is-equivalence R ≡ is-equivalence (R ˘)
+Theorem “Idempotency from reflexive and transitive”:
+    is-reflexive R ⇒ is-transitive R ⇒ is-idempotent R
+
+Declaration: is-antisymmetric, is-order : A ↔ A  →  𝔹
+Axiom “Definition of antisymmetry”:   is-antisymmetric R  ≡  R ∩ R ˘ ⊆ Id
+Axiom “Definition of ordering”:       is-order R          ≡  is-reflexive R
+                                                             ∧ is-antisymmetric R
+                                                             ∧ is-transitive R
+Theorem “Antisymmetry of converse”:  is-antisymmetric R  ≡  is-antisymmetric (R ˘)
+Theorem “Converse of an order”:  is-order E  ≡  is-order (E ˘)
+Theorem “Hesitation”: R ⊆ R ⨾ R ˘ ⨾ R
+Theorem “Idempotency from symmetric and transitive”:
+    is-symmetric R ⇒ is-transitive R ⇒ is-idempotent R
+
+
+Relation Algebra
+---------------------------
+Declaration: _∩_ : A ↔ B → A ↔ B → A ↔ B
+Axiom “Characterisation of ∩”: Q ⊆ R ∩ S   ≡   Q ⊆ R  ∧ Q ⊆ S
+Theorem “Weakening for ∩”: Q ∩ R ⊆ Q  ∧  Q ∩ R ⊆ R
+Theorem “Symmetry of ∩”: Q ∩ R ⊆ R ∩ Q
+Corollary “Symmetry of ∩”: Q ∩ R = R ∩ Q
+Theorem “Associativity of ∩”: (Q ∩ R) ∩ S ⊆ Q ∩ (R ∩ S)
+Corollary “Associativity of ∩”: (Q ∩ R) ∩ S = Q ∩ (R ∩ S)
+Theorem “Idempotency of ∩”: R ∩ R = R
+Theorem “Monotonicity of ∩”: Q ⊆ R  ⇒  Q ∩ S ⊆ R ∩ S
+Theorem “Sub-distributivity of ⨾ over ∩”: Q ⨾ (R ∩ S)  ⊆  Q ⨾ R  ∩  Q ⨾ S
+Theorem “Converse of ∩”:     (R ∩ S) ˘  ⊆  R ˘ ∩ S ˘
+Theorem “Converse of ∩”:     (R ∩ S) ˘  =  R ˘ ∩ S ˘
+Theorem “Dedekind implies modal 1”:
+        (Q ⨾ R) ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ (R ∩ Q ˘ ⨾ S)
+    ⇒   (Q ⨾ R) ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ R
+Theorem “Dedekind implies modal 2”:
+        (Q ⨾ R) ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ (R ∩ Q ˘ ⨾ S)
+    ⇒   (Q ⨾ R) ∩ S ⊆ Q            ⨾ (R ∩ Q ˘ ⨾ S)
+Theorem “Modal 1 implies modal 2”:
+      (∀ Q • ∀ R • ∀ S • (Q ⨾ R) ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ R)
+    ⇒ (Q ⨾ R) ∩ S ⊆ Q ⨾ (R ∩ Q ˘ ⨾ S)
+Theorem “Modal 1 implies Dedekind”:
+      (∀ Q • ∀ R • ∀ S • (Q ⨾ R) ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ R)
+    ⇒ (Q ⨾ R) ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ (R ∩ Q ˘ ⨾ S)
+Axiom “Dedekind rule”: (Q ⨾ R) ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ (R ∩ Q ˘ ⨾ S)
+Theorem “Modal rule”:    (Q ⨾ R) ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ R
+Theorem “Modal rule”:    (Q ⨾ R) ∩ S ⊆ Q             ⨾ (R ∩ Q ˘ ⨾ S)
+
+
+Heterogeneous relation properties
+---------------------------
+
+Axiom “Reflexivity of ⊆”: R ⊆ R
+Axiom “Transitivity of ⊆”: Q ⊆ R ⇒ R ⊆ S ⇒ Q ⊆ S
+Axiom “Antisymmetry of ⊆”: R ⊆ S ⇒ S ⊆ R ⇒ R = S
+Lemma “Reflexivity of ⊆”: R = S ⇒ R ⊆ S
+Theorem “Mutual inclusion”: R = S ≡ R ⊆ S ∧ S ⊆ R
+Axiom “Associativity of ⨾”: (Q ⨾ R) ⨾ S = Q ⨾ (R ⨾ S)
+Axiom “Monotonicity of ⨾”: P ⊆ Q ⇒ R ⊆ S ⇒ P ⨾ R ⊆ Q ⨾ S
+Theorem “Monotonicity of ⨾”: Q ⊆ R ⇒ Q ⨾ S ⊆ R ⨾ S
+Theorem “Monotonicity of ⨾”: R ⊆ S ⇒ Q ⨾ R ⊆ Q ⨾ S
+Axiom “Identity of ⨾”: Id ⨾ R = R
+Axiom “Identity of ⨾”: R ⨾ Id = R
+Axiom “Self-inverse of ˘”: (R ˘) ˘ = R
+Lemma “Injectivity of converse”: R ˘ = S ˘ ≡ R = S
+Axiom “Monotonicity of ˘”: R ⊆ S ⇒ R ˘ ⊆ S ˘
+Theorem “Isotonicity of ˘”: R ⊆ S ≡ R ˘ ⊆ S ˘
+Axiom “Converse of `Id`”: Id ˘ = Id
+Axiom “Converse of ⨾”: (R ⨾ S) ˘ = S ˘ ⨾ R ˘
+
+
+Axiom “Definition of reflexivity”: is-reflexive R ≡ Id ⊆ R
+Axiom “Definition of symmetry”: is-symmetric R ≡ R ˘ ⊆ R
+Axiom “Definition of transitivity”: is-transitive R ≡ R ⨾ R ⊆ R
+Axiom “Definition of idempotency”: is-idempotent R ≡ R ⨾ R = R
+Axiom “Definition of equivalence”: is-equivalence R ≡ is-reflexive R ∧ is-symmetric R ∧ is-transitive R
+Lemma “Definition of symmetry”: is-symmetric R ≡ R ˘ = R
+Theorem “Reflexivity of converse”: is-reflexive R ≡ is-reflexive (R ˘)
+Theorem “Symmetry of converse”: is-symmetric R ≡ is-symmetric (R ˘)
+Theorem “Transitivity of converse”: is-transitive R ≡ is-transitive (R ˘)
+Theorem “Idempotency of converse”: is-idempotent R ≡ is-idempotent (R ˘)
+Theorem “Converse of an equivalence”: is-equivalence R ≡ is-equivalence (R ˘)
+Theorem “Idempotency from reflexive and transitive”: is-reflexive R ⇒ is-transitive R ⇒ is-idempotent R
+
+
+Axiom “Characterisation of ∩”: Q ⊆ R ∩ S ≡ Q ⊆ R ∧ Q ⊆ S
+Theorem “Weakening for ∩”: Q ∩ R ⊆ Q ∧ Q ∩ R ⊆ R
+Theorem “Symmetry of ∩”: Q ∩ R ⊆ R ∩ Q
+Corollary “Symmetry of ∩”: Q ∩ R = R ∩ Q
+Theorem “Associativity of ∩”: (Q ∩ R) ∩ S ⊆ Q ∩ (R ∩ S)
+Corollary “Associativity of ∩”: (Q ∩ R) ∩ S = Q ∩ (R ∩ S)
+Theorem “Idempotency of ∩”: R ∩ R = R
+Theorem “Monotonicity of ∩”: Q ⊆ R ⇒ Q ∩ S ⊆ R ∩ S
+Theorem “Sub-distributivity of ⨾ over ∩”: Q ⨾ (R ∩ S) ⊆ Q ⨾ R ∩ Q ⨾ S
+Theorem “Sub-distributivity of ⨾ over ∩”: (Q ∩ R) ⨾ S ⊆ Q ⨾ S ∩ R ⨾ S
+Theorem “Converse of ∩”: (R ∩ S) ˘ ⊆ R ˘ ∩ S ˘
+Theorem “Converse of ∩”: (R ∩ S) ˘ = R ˘ ∩ S ˘
+Theorem “Dedekind implies modal 1”: Q ⨾ R ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ (R ∩ Q ˘ ⨾ S) ⇒ Q ⨾ R ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ R
+Theorem “Dedekind implies modal 2”: Q ⨾ R ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ (R ∩ Q ˘ ⨾ S) ⇒ Q ⨾ R ∩ S ⊆ Q ⨾ (R ∩ Q ˘ ⨾ S)
+Theorem “Modal 1 implies modal 2”: (∀ Q • (∀ R • (∀ S • Q ⨾ R ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ R ) ) ) ⇒ Q ⨾ R ∩ S ⊆ Q ⨾ (R ∩ Q ˘ ⨾ S)
+Theorem “Modal 1 implies Dedekind”: (∀ Q • (∀ R • (∀ S • Q ⨾ R ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ R ) ) ) ⇒ Q ⨾ R ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ (R ∩ Q ˘ ⨾ S)
+Axiom “Dedekind rule”: Q ⨾ R ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ (R ∩ Q ˘ ⨾ S)
+Theorem “Modal rule”: Q ⨾ R ∩ S ⊆ (Q ∩ S ⨾ R ˘) ⨾ R
+Theorem “Modal rule”: Q ⨾ R ∩ S ⊆ Q ⨾ (R ∩ Q ˘ ⨾ S)
+
+Axiom “Definition of antisymmetry”: is-antisymmetric R ≡ R ∩ R ˘ ⊆ Id
+Axiom “Definition of ordering”: is-order R ≡ is-reflexive R ∧ (is-antisymmetric R ∧ is-transitive R)
+Theorem “Antisymmetry of converse”: is-antisymmetric R ≡ is-antisymmetric (R ˘)
+Theorem “Converse of an order”: is-order E ≡ is-order (E ˘)
+Theorem “Hesitation”: R ⊆ R ⨾ (R ˘ ⨾ R)
+Theorem “Idempotency from symmetric and transitive”: is-symmetric R ⇒ (is-transitive R ⇒ is-idempotent R)
+
+
 
