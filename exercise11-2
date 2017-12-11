@@ -1,0 +1,144 @@
+Lemma “Reflexivity of ⊆”: R = S  ⇒  R ⊆ S
+Proof:
+  Assuming `R = S`:
+      R ⊆ S
+    ≡⟨ Assumption `R = S` ⟩
+      R ⊆ R — This is “Reflexivity of ⊆”
+
+Theorem “Mutual inclusion”: R = S  ≡  R ⊆ S  ∧  S ⊆ R
+Proof:
+  Using “Mutual implication”:
+    Subproof for `R = S ⇒ R ⊆ S  ∧  S ⊆ R`:
+      Assuming `R = S`:
+          R ⊆ S  ∧  S ⊆ R
+        ≡⟨ Assumption `R = S`, “Reflexivity of ⊆”, “Identity of ∧” ⟩
+          true
+    Subproof for `R ⊆ S  ∧  S ⊆ R ⇒ R = S`:
+      By “Antisymmetry of ⊆” with “Shunting”
+
+Theorem “Monotonicity of ⨾”:  R ⊆ S  ⇒  Q ⨾ R ⊆ Q ⨾ S
+Proof:
+   Assuming `R ⊆ S`:
+       true
+     ≡⟨ “Reflexivity of ⊆” ⟩
+       Q ⊆ Q
+     ⇒⟨ “Monotonicity of ⨾” ⟩
+       R ⊆ S ⇒ Q ⨾ R ⊆ Q ⨾ S
+     ≡⟨ Assumption `R ⊆ S` ⟩
+       true ⇒ Q ⨾ R ⊆ Q ⨾ S
+     ≡⟨ “Left-identity of ⇒” ⟩
+       Q ⨾ R ⊆ Q ⨾ S
+
+
+Lemma “Injectivity of converse”: R ˘ = S ˘  ≡  R = S
+Proof:
+  Using “Mutual implication”:
+    Subproof for `R ˘ = S ˘ ⇒  R = S`:
+      Assuming `R ˘ = S ˘`:
+          R = S
+        ≡⟨ “Self-inverse of ˘” ⟩
+          R ˘ ˘ = S ˘ ˘
+        ≡⟨ Assumption `R ˘ = S ˘` ⟩
+          S ˘ ˘ = S ˘ ˘ — This is “Reflexivity of =”
+    Subproof for `R = S ⇒  R ˘ = S ˘`:
+      Assuming `R = S`:
+          R ˘ = S ˘
+        ≡⟨ Assumption `R = S` ⟩
+          S ˘ = S ˘ — This is “Reflexivity of =”
+
+
+Theorem “Isotonicity of ˘”:  R ⊆ S  ≡  R ˘ ⊆ S ˘
+Proof:
+  Using “Mutual implication”:
+    Subproof for `R ⊆ S  ⇒  R ˘ ⊆ S ˘`:
+       By “Monotonicity of ˘”
+    Subproof for `R ˘ ⊆ S ˘  ⇒  R ⊆ S`:
+       By “Self-inverse of ˘”, “Monotonicity of ˘”
+
+Lemma “Definition of symmetry”:       is-symmetric R      ≡  R ˘ = R
+Proof:
+  Using “Mutual implication”:
+    Subproof for `is-symmetric R  ⇒  R ˘ = R`:
+      Assuming `is-symmetric R`:
+        Using “Mutual inclusion”:
+          Subproof for `R ˘ ⊆ R ∧  R ⊆ R ˘`:
+              R ˘ ⊆ R ∧  R ⊆ R ˘
+            ≡⟨ Assumption `is-symmetric R` with “Definition of symmetry” ⟩
+              true ∧ R ⊆ R ˘
+            ≡⟨ “Identity of ∧” ⟩
+              R ⊆ R ˘
+            ≡⟨ “Self-inverse of ˘” ⟩
+              R ˘ ˘ ⊆ R ˘ ˘ ˘
+            ⇐⟨ “Consequence”, “Monotonicity of ˘” ⟩
+              R ˘ ⊆ R ˘ ˘
+            ≡⟨ “Self-inverse of ˘” ⟩
+              R ˘ ⊆ R
+            ≡⟨ Assumption `is-symmetric R` with “Definition of symmetry” ⟩
+              true
+    Subproof for `R ˘ = R  ⇒  is-symmetric R`:
+      Assuming `R ˘ = R`:
+          is-symmetric R
+        ≡⟨ “Definition of symmetry” ⟩
+          R ˘ ⊆ R
+        ≡⟨ Assumption `R ˘ = R` ⟩
+          R ⊆ R — This is “Reflexivity of ⊆”
+
+
+Theorem “Reflexivity of converse”: is-reflexive R ≡ is-reflexive (R ˘)
+Proof:
+    is-reflexive R
+  ≡⟨ “Definition of reflexivity” ⟩
+    Id ⊆ R
+  ≡⟨ “Isotonicity of ˘” ⟩
+    Id ˘ ⊆ R ˘
+  ≡⟨ “Converse of `Id`” ⟩
+    Id ⊆ R ˘
+  ≡⟨ “Definition of reflexivity” ⟩
+    is-reflexive (R ˘)
+
+Theorem “Symmetry of converse”: is-symmetric R ≡ is-symmetric (R ˘)
+Proof:
+    is-symmetric R
+  ≡⟨ “Definition of symmetry” ⟩
+    R ˘ = R
+  ≡⟨ “Self-inverse of ˘” ⟩
+    R ˘ = R ˘ ˘
+  ≡⟨ “Definition of symmetry” ⟩
+    is-symmetric (R ˘)
+
+
+Theorem “Transitivity of converse”: is-transitive R ≡ is-transitive (R ˘)
+Proof:
+    is-transitive R
+  ≡⟨ “Definition of transitivity” ⟩
+    R ⨾ R ⊆ R
+  ≡⟨ “Isotonicity of ˘” ⟩
+    (R ⨾ R) ˘ ⊆ R ˘
+  ≡⟨ “Converse of ⨾” ⟩
+    R ˘ ⨾ R ˘ ⊆ R ˘
+  ≡⟨ “Definition of transitivity” ⟩
+    is-transitive (R ˘)
+
+
+Theorem “Idempotency of converse”: is-idempotent R ≡ is-idempotent (R ˘)
+Proof:
+    is-idempotent R
+  ≡⟨ “Definition of idempotency” ⟩
+    R ⨾ R = R
+  ≡⟨ “Injectivity of converse” ⟩
+    (R ⨾ R) ˘ = R ˘
+  ≡⟨ “Converse of ⨾” ⟩
+    R ˘ ⨾ R ˘ = R ˘
+  ≡⟨ “Definition of idempotency” ⟩
+    is-idempotent (R ˘)
+
+Theorem “Converse of an equivalence”: is-equivalence R ≡ is-equivalence (R ˘)
+Proof:
+    is-equivalence R
+  ≡⟨ “Definition of equivalence” ⟩
+    is-reflexive R ∧ is-symmetric R ∧ is-transitive R
+  ≡⟨ “Reflexivity of converse”, “Symmetry of converse”, “Transitivity of converse” ⟩
+    is-reflexive (R ˘) ∧ is-symmetric (R ˘) ∧ is-transitive (R ˘)
+  ≡⟨ “Definition of equivalence” ⟩
+    is-equivalence (R ˘)
+
