@@ -3,17 +3,22 @@
 ## Resources and Links
 
 CalcCheck: Proof system for ALAtDM
-http://calccheck.mcmaster.ca/CalcCheckDoc/2DM3-2018-instances.html
+- http://calccheck.mcmaster.ca/CalcCheckDoc/2DM3-2018-instances.html
 
 "MathMeth": Programming in the Calculational Style a la Dijkstra (Meijer?)
-http://www.mathmeth.com/
+- http://www.mathmeth.com/
 
 Functional Mathematics Resources
-http://www.funmath.be/
+- http://www.funmath.be/
 
 LiquidHaskell: Supporting Equational Logic Proofs in Haskell
-https://ucsd-progsys.github.io/liquidhaskell-blog/
+- https://ucsd-progsys.github.io/liquidhaskell-blog/
 
+Refinement Calculus: A Systematic Introduction (View: "Calulus of Contracts, Agents, Games")
+- https://link.springer.com/book/10.1007/978-1-4612-1674-2
+
+Correctness-by-Construction (applies to many algorithms)
+- https://www.amazon.ca/Correctness-Construction-Approach-Programming/dp/3642448542/
 
 ## Original Description
 
