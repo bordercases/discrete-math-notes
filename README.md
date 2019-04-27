@@ -11,6 +11,10 @@ http://www.mathmeth.com/
 Functional Mathematics Resources
 http://www.funmath.be/
 
+LiquidHaskell: Supporting Equational Logic Proofs in Haskell
+https://ucsd-progsys.github.io/liquidhaskell-blog/
+
+
 ## Original Description
 
 Notes and solutions for discrete math course (SFWR 2DM3). Based on "A logical approach to discrete math" by David Gries and Fred B. Schneider.
