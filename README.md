@@ -3,7 +3,7 @@
 ## Resources and Links
 
 CalcCheck: Proof system for ALAtDM
-- http://calccheck.mcmaster.ca/CalcCheckDoc/2DM3-2018-instances.html
+- http://www.cas.mcmaster.ca/~kahl/CS2DM3/2020/2DM3-2020-instances.html
 
 "MathMeth": Programming in the Calculational Style a la Dijkstra (Meijer?)
 - http://www.mathmeth.com/
