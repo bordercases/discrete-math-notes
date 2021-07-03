@@ -20,6 +20,9 @@ Refinement Calculus: A Systematic Introduction (View: "Calulus of Contracts, Age
 Correctness-by-Construction (applies to many algorithms)
 - https://www.amazon.ca/Correctness-Construction-Approach-Programming/dp/3642448542/
 
+Functional Data Structures
+- https://cs.uwaterloo.ca/~plragde/flaneries/FDS/
+
 ## Original Description
 
 Notes and solutions for discrete math course (SFWR 2DM3). Based on "A logical approach to discrete math" by David Gries and Fred B. Schneider.
